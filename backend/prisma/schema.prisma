@@ -5,10 +5,91 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client"
-  output   = "../src/generated/prisma"
+  provider = "prisma-client-js" // generates TypeScript client 
+  // output   = "../src/generated/prisma" (By default, the generated code goes into: node_modules/@prisma/client)
 }
 
 datasource db {
   provider = "postgresql"
+  url = env("DATABASE_URL")
+}
+
+model User {
+  id String @id @default(uuid())
+  name String
+  email String @unique
+  password String
+  avatar String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+}
+
+model Board {
+  id String @id @default(uuid())
+  title String
+  description String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model List {
+  id String @id @default(uuid())
+  title String
+  position Int
+  boardId String
+  board Board @relation(fields: [boardId], references: [id], onDelete: Cascade)
+}
+
+model BoardMember {
+  id String @id @default(uuid())
+  role String @default("member")
+  userId String
+  boardId String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  board Board @relation(fields: [boardId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, boardId])
+  @@index([boardId])
+}
+
+model Task {
+  id String @id @default(uuid())
+  title String
+  description String?
+  position Int
+  priority String @default("medium")
+  dueDate DateTime?
+  listId String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  list List @relation(fields: [listId], references: [id], onDelete: Cascade)
+}
+
+model TaskAssignee {
+  id String @id @default(uuid())
+  userId String
+  taskId String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  task Task @relation(fields: [taskId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, taskId])
+}
+
+model Activity {
+  id String @id @default(uuid())
+  action String
+  details String
+  entityType String @default("task")
+  taskId String?
+  userId String
+  boardId String
+  createdAt DateTime @default(now())
+  task Task? @relation(fields: [taskId], references: [id], onDelete: SetNull)
+  board Board @relation(fields: [boardId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([boardId])
+  @@index([taskId])
 }
