@@ -22,15 +22,21 @@ model User {
   avatar String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  
+  boards BoardMember[]
+  assignedTasks TaskAssignee[]
+  activities Activity[]
 }
 
 model Board {
   id String @id @default(uuid())
   title String
   description String?
+  color String @default("#6366f1")
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  members BoardMember[]
+  lists List[]
+  activities Activity[]
 }
 
 model List {
@@ -39,6 +45,8 @@ model List {
   position Int
   boardId String
   board Board @relation(fields: [boardId], references: [id], onDelete: Cascade)
+  tasks Task[]
+  @@index([boardId])
 }
 
 model BoardMember {
@@ -65,6 +73,9 @@ model Task {
   updatedAt DateTime @updatedAt
 
   list List @relation(fields: [listId], references: [id], onDelete: Cascade)
+  assignees TaskAssignee[]
+  activities Activity[]
+  @@index([listId])
 }
 
 model TaskAssignee {
