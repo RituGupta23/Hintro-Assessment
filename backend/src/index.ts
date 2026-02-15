@@ -1,10 +1,30 @@
 import express from "express";
+import cors from "cors";
 import dotenv from "dotenv";
+import authRoutes from "./routes/auth.routes";
+import { errorHandler } from "./middleware/errorHandler";
+import { createServer } from "http";
+
 dotenv.config();
 
 const app = express();
+const server = createServer(app);
 const port = process.env.PORT || 3001;
 
-app.listen(port, () => {
+app.use(express.json());
+
+// health check
+app.get('/api/health', (_req, res) => {
+    res.json({ status: 'ok', timestamp: new Date().toISOString() });
+});
+
+// auth routes
+app.use('/api/auth', authRoutes);
+
+app.use(errorHandler);
+
+server.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
+
+export default app;
