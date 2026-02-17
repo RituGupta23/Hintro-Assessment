@@ -211,7 +211,7 @@ Actions (e.g., Moving a Task) follow this strict flow:
 | `list:deleted` | `{ listId, boardId }` | A list was removed. |
 
 
-<!-- ## Scalability & Trade-offs
+## Scalability & Trade-offs
 
 -   **Scalability**:
     -   **Socket.io Redis Adapter**: For scaling to multiple server instances, we would need to introduce a Redis adapter to pass messages between socket servers.
@@ -220,7 +220,7 @@ Actions (e.g., Moving a Task) follow this strict flow:
 
 -   **Trade-offs**:
     -   **REST vs GraphQL**: REST was chosen for simplicity and speed of implementation given the timeframe. GraphQL would offer more flexible data fetching for the complex board structure.
-    -   **Long Polling fallback**: Socket.io automatically falls back to HTTP long-polling if WebSockets are unavailable, ensuring robust connectivity. -->
+    -   **Long Polling fallback**: Socket.io automatically falls back to HTTP long-polling if WebSockets are unavailable, ensuring robust connectivity.
 
 ## Demo Credentials
 
