@@ -152,7 +152,7 @@ Below is a high-level overview of the database schema:
 
 ## API Documentation
  
-### **[View Full API Design Document](API_Design.md)** for detailed request/response examples.
+### **[View Full API Design Document](./backend/API_Design.md)** for detailed request/response examples.
 ### Auth
 -   `POST /api/auth/signup`: Register a new user.
 -   `POST /api/auth/login`: Login and receive JWT.
