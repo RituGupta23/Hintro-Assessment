@@ -73,7 +73,8 @@ frontend/
 2.  **Environment Variables**
     Create a `.env` file to configure the backend URL
     ```
-    VITE_API_URL=http://localhost:3001
+    VITE_API_URL=http://localhost:3001/api
+    VITE_SOCKET_URL=http://localhost:3001
     ```
 
 3.  **Development Server**
