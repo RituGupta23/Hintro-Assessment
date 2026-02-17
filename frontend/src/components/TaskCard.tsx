@@ -1,6 +1,6 @@
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import { GripVertical, Calendar, User } from 'lucide-react';
+import { GripVertical, Calendar } from 'lucide-react';
 
 interface TaskCardProps {
     task: {
@@ -59,7 +59,7 @@ export const TaskCard = ({ task, onClick }: TaskCardProps) => {
                         title={`${task.priority} priority`}
                     />
                 </div>
-                
+
                 {/* {task.description && (
                     <p className="text-[13px] text-[#6e7191] leading-relaxed mb-2.5">
                         {task.description.length > 80
@@ -80,9 +80,9 @@ export const TaskCard = ({ task, onClick }: TaskCardProps) => {
                     {task.assignees.length > 0 && (
                         <div className="flex -space-x-1.5">
                             {task.assignees.slice(0, 3).map((a, idx) => (
-                                <div 
-                                    key={idx} 
-                                    className="w-6 h-6 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-[11px] font-semibold text-white border border-[#0a0a0f] flex-shrink-0" 
+                                <div
+                                    key={idx}
+                                    className="w-6 h-6 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-[11px] font-semibold text-white border border-[#0a0a0f] flex-shrink-0"
                                     title={a.user.name}
                                 >
                                     {a.user.name[0].toUpperCase()}

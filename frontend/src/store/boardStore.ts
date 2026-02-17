@@ -370,7 +370,7 @@ export const useBoardStore = create<BoardState>((set, get) => ({
         });
     },
 
-    handleTaskMoved: (task, oldListId) => {
+    handleTaskMoved: (task, _oldListId) => {
         set((s) => {
             if (!s.currentBoard?.lists) return s;
 

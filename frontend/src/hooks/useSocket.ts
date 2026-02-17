@@ -8,7 +8,6 @@ export const useSocketBoard = (boardId: string | undefined) => {
         handleTaskCreated,
         handleTaskUpdated,
         handleTaskDeleted,
-        handleTaskMoved,
         handleListCreated,
         handleListDeleted,
         fetchBoard,
@@ -30,7 +29,7 @@ export const useSocketBoard = (boardId: string | undefined) => {
         socket.on('task:deleted', (data: any) => {
             handleTaskDeleted(data.taskId, data.listId);
         });
-        socket.on('task:moved', (data: any) => {
+        socket.on('task:moved', (_data: any) => {
             fetchBoard(boardId);
         });
         socket.on('list:created', (data: any) => {

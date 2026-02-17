@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useBoardStore } from '../store/boardStore';
-import { X, UserPlus, Mail, Trash2 } from 'lucide-react';
+import { X, UserPlus, Mail } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 interface BoardMemberModalProps {
@@ -34,8 +34,8 @@ export const BoardMemberModal = ({ boardId, onClose }: BoardMemberModalProps) =>
             <div className="bg-[#1a1a24]/95 backdrop-blur-xl border border-[#3a3a4a] rounded-2xl p-7 max-w-[420px] w-[90%] max-h-[90vh] overflow-y-auto shadow-[0_12px_40px_rgba(0,0,0,0.5)] animate-[slideUp_0.3s_ease]" onClick={(e) => e.stopPropagation()}>
                 <div className="flex items-center justify-between mb-6">
                     <h2 className="text-xl font-bold text-[#e8e9f3]">Board Members</h2>
-                    <button 
-                        className="p-2 bg-transparent border-none rounded-lg cursor-pointer text-[#6e7191] inline-flex items-center transition-all duration-300 hover:bg-[#252535] hover:text-[#e8e9f3] hover:scale-105" 
+                    <button
+                        className="p-2 bg-transparent border-none rounded-lg cursor-pointer text-[#6e7191] inline-flex items-center transition-all duration-300 hover:bg-[#252535] hover:text-[#e8e9f3] hover:scale-105"
                         onClick={onClose}
                     >
                         <X size={20} />
@@ -60,9 +60,9 @@ export const BoardMemberModal = ({ boardId, onClose }: BoardMemberModalProps) =>
                             />
                         </div>
                     </div>
-                    <button 
-                        type="submit" 
-                        className="w-full justify-center inline-flex items-center gap-2 px-5 py-[11px] border-none rounded-lg text-sm font-semibold cursor-pointer transition-all duration-300 font-inherit relative overflow-hidden bg-indigo-800 text-white" 
+                    <button
+                        type="submit"
+                        className="w-full justify-center inline-flex items-center gap-2 px-5 py-[11px] border-none rounded-lg text-sm font-semibold cursor-pointer transition-all duration-300 font-inherit relative overflow-hidden bg-indigo-800 text-white"
                         disabled={isAdding}
                     >
                         <UserPlus size={18} />
@@ -91,8 +91,8 @@ export const BoardMemberModal = ({ boardId, onClose }: BoardMemberModalProps) =>
                 </div>
 
                 <div className="flex gap-3 mt-5">
-                    <button 
-                        className="w-full justify-center inline-flex items-center gap-2 px-5 py-[11px] border-none rounded-lg text-sm font-semibold cursor-pointer transition-all duration-300 bg-transparent text-[#b4b6c8] hover:bg-[#252535] hover:text-[#e8e9f3]" 
+                    <button
+                        className="w-full justify-center inline-flex items-center gap-2 px-5 py-[11px] border-none rounded-lg text-sm font-semibold cursor-pointer transition-all duration-300 bg-transparent text-[#b4b6c8] hover:bg-[#252535] hover:text-[#e8e9f3]"
                         onClick={onClose}
                     >
                         Close

@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useBoardStore, type Activity } from '../store/boardStore';
+import { useBoardStore } from '../store/boardStore';
 import { X, Clock } from 'lucide-react';
 
 interface ActivityPanelProps {
@@ -56,8 +56,8 @@ export const ActivityPanel = ({ boardId, onClose }: ActivityPanelProps) => {
                     <Clock size={16} />
                     Activity
                 </h3>
-                <button 
-                    className="p-2 bg-transparent border-none rounded-lg cursor-pointer text-[#6e7191] inline-flex items-center transition-all duration-300 hover:bg-[#252535] hover:text-[#e8e9f3] hover:scale-105" 
+                <button
+                    className="p-2 bg-transparent border-none rounded-lg cursor-pointer text-[#6e7191] inline-flex items-center transition-all duration-300 hover:bg-[#252535] hover:text-[#e8e9f3] hover:scale-105"
                     onClick={onClose}
                 >
                     <X size={18} />
@@ -72,8 +72,8 @@ export const ActivityPanel = ({ boardId, onClose }: ActivityPanelProps) => {
                 ) : (
                     <>
                         {activities.map((activity) => (
-                            <div 
-                                key={activity.id} 
+                            <div
+                                key={activity.id}
                                 className="flex gap-3 p-3 rounded-lg mb-2 bg-[#13131a] transition-colors duration-300 hover:bg-[#252535]"
                             >
                                 <div className="text-lg flex-shrink-0">
@@ -92,8 +92,8 @@ export const ActivityPanel = ({ boardId, onClose }: ActivityPanelProps) => {
                         ))}
 
                         {activityPagination && activityPagination.page < activityPagination.totalPages && (
-                            <button 
-                                className="w-full justify-center inline-flex items-center gap-2 px-3.5 py-1.5 border-none rounded-lg text-[13px] font-semibold cursor-pointer transition-all duration-300 bg-transparent text-[#b4b6c8] hover:bg-[#252535] hover:text-[#e8e9f3]" 
+                            <button
+                                className="w-full justify-center inline-flex items-center gap-2 px-3.5 py-1.5 border-none rounded-lg text-[13px] font-semibold cursor-pointer transition-all duration-300 bg-transparent text-[#b4b6c8] hover:bg-[#252535] hover:text-[#e8e9f3]"
                                 onClick={handleLoadMore}
                             >
                                 Load More

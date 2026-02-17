@@ -1,7 +1,7 @@
 import { useDroppable } from '@dnd-kit/core';
 import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import { TaskCard } from './TaskCard';
-import { MoreVertical, Plus, Edit2, Trash2 } from 'lucide-react';
+import { Edit2, Trash2 } from 'lucide-react';
 import type { Task, List } from '../store/boardStore';
 
 interface BoardListProps {
@@ -22,7 +22,6 @@ interface BoardListProps {
 
 export const BoardList = ({
     list,
-    isActive,
     isEditing,
     editingTitle,
     newTaskTitle,
