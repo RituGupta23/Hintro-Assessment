@@ -18,6 +18,7 @@ interface AuthState {
     signup: (name: string, email: string, password: string) => Promise<void>;
     logout: () => void;
     loadUser: () => Promise<void>;
+    checkAuth: () => Promise<void>;
     clearError: () => void;
 }
 
@@ -73,6 +74,13 @@ export const useAuthStore = create<AuthState>((set, get) => ({
             set({ user: data.data.user });
         } catch {
             get().logout();
+        }
+    },
+
+    checkAuth: async () => {
+        const token = get().token;
+        if (token) {
+            await get().loadUser();
         }
     },
 

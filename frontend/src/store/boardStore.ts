@@ -156,6 +156,7 @@ export const useBoardStore = create<BoardState>((set, get) => ({
         const newList = data.data.list;
         set((s) => {
             if (!s.currentBoard || s.currentBoard.id !== boardId) return s;
+            if (s.currentBoard.lists?.some(l => l.id === newList.id)) return s;
             return {
                 currentBoard: {
                     ...s.currentBoard,
@@ -196,6 +197,9 @@ export const useBoardStore = create<BoardState>((set, get) => ({
         const newTask = data.data.task;
         set((s) => {
             if (!s.currentBoard?.lists) return s;
+            const list = s.currentBoard.lists.find(l => l.id === listId);
+            if (list && list.tasks.some(t => t.id === newTask.id)) return s;
+
             return {
                 currentBoard: {
                     ...s.currentBoard,
@@ -322,6 +326,10 @@ export const useBoardStore = create<BoardState>((set, get) => ({
     handleTaskCreated: (task, listId) => {
         set((s) => {
             if (!s.currentBoard?.lists) return s;
+            // Check if task already exists to prevent duplication
+            const list = s.currentBoard.lists.find(l => l.id === listId);
+            if (list && list.tasks.some(t => t.id === task.id)) return s;
+
             return {
                 currentBoard: {
                     ...s.currentBoard,
@@ -365,17 +373,28 @@ export const useBoardStore = create<BoardState>((set, get) => ({
     handleTaskMoved: (task, oldListId) => {
         set((s) => {
             if (!s.currentBoard?.lists) return s;
-            const lists = s.currentBoard.lists.map((l) => ({
+
+            // Remove from old list (or current list if just reordering)
+            const listsWithRemoved = s.currentBoard.lists.map((l) => ({
                 ...l,
                 tasks: l.tasks.filter((t) => t.id !== task.id),
             }));
+
+            // Add to new list at correct position
             return {
                 currentBoard: {
                     ...s.currentBoard,
-                    lists: lists.map((l) => {
+                    lists: listsWithRemoved.map((l) => {
                         if (l.id === task.listId) {
-                            const tasks = [...l.tasks, task].sort((a, b) => a.position - b.position);
-                            return { ...l, tasks };
+                            const newTasks = [...l.tasks];
+                            // Insert at position or append if no position
+                            if (task.position >= 0 && task.position < newTasks.length) {
+                                newTasks.splice(task.position, 0, task);
+                            } else {
+                                newTasks.push(task);
+                            }
+                            // Re-sort just in case
+                            return { ...l, tasks: newTasks.sort((a, b) => a.position - b.position) };
                         }
                         return l;
                     }),
@@ -387,6 +406,9 @@ export const useBoardStore = create<BoardState>((set, get) => ({
     handleListCreated: (list) => {
         set((s) => {
             if (!s.currentBoard) return s;
+            // Check if list already exists
+            if (s.currentBoard.lists?.some(l => l.id === list.id)) return s;
+
             return {
                 currentBoard: {
                     ...s.currentBoard,

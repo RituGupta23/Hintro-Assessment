@@ -4,3 +4,5 @@ dist
 /src/generated/prisma
 coverage/
 test.backend.sh
+coverage_output.txt
+final_coverage.txt
