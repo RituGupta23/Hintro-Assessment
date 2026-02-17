@@ -21,11 +21,9 @@
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,
-
     // Stricter Typechecking Options
     // "noUncheckedIndexedAccess": true,
     // "exactOptionalPropertyTypes": true,
-
     // Style Options
     // "noImplicitReturns": true,
     // "noImplicitOverride": true,
@@ -33,7 +31,6 @@
     // "noUnusedParameters": true,
     // "noFallthroughCasesInSwitch": true,
     // "noPropertyAccessFromIndexSignature": true,
-
     // Recommended Options
     "strict": true,
     // "jsx": "react-jsx",
@@ -41,6 +38,15 @@
     // "isolatedModules": true,
     // "noUncheckedSideEffectImports": true,
     // "moduleDetection": "force",
-    "skipLibCheck": true,
-  }
+    "skipLibCheck": true
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "coverage",
+    "jest.config.ts",
+    "tests",
+    "**/*.test.ts",
+    "**/*.spec.ts"
+  ]
 }
