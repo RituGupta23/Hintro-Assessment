@@ -23,9 +23,9 @@ export const SignupPage: React.FC = () => {
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen p-8 relative overflow-x-hidden">
+        <div className="flex items-center justify-center min-h-screen p-4 md:p-8 relative overflow-x-hidden">
 
-            <div className="w-full max-w-[440px] bg-black/50 backdrop-blur-xl border border-[#3a3a4a] rounded-3xl p-12">
+            <div className="w-full max-w-[440px] bg-black/50 backdrop-blur-xl border border-[#3a3a4a] rounded-3xl p-6 md:p-12">
                 <div className="text-center mb-9">
                     <div className="flex items-center justify-center gap-3.5 mb-3">
                         <h1 className="text-3xl font-extrabold text-indigo-300"> Hintro </h1>
