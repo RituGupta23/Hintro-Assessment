@@ -98,7 +98,7 @@ backend/
     Create `.env` based on `.env_example`:
     ```env
     PORT=3001
-    DATABASE_URL="postgresql://user:password@localhost:5432/hintro_db"
+    DATABASE_URL="postgresql://user:password@localhost:5432/syncdeck_db"
     JWT_SECRET="your_secret_key"
     CLIENT_URL="http://localhost:5173"
     ```

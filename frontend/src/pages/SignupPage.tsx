@@ -28,7 +28,7 @@ export const SignupPage: React.FC = () => {
             <div className="w-full max-w-[440px] bg-black/50 backdrop-blur-xl border border-[#3a3a4a] rounded-3xl p-6 md:p-12">
                 <div className="text-center mb-9">
                     <div className="flex items-center justify-center gap-3.5 mb-3">
-                        <h1 className="text-3xl font-extrabold text-indigo-300"> Hintro </h1>
+                        <h1 className="text-3xl font-extrabold text-indigo-300"> SyncDeck </h1>
                     </div>
                     <p className="text-gray-400 text-md font-medium">Create your workspace account</p>
                 </div>

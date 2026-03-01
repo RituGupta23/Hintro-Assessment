@@ -44,7 +44,7 @@ updates.
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/RituGupta23/Hintro-Assessment.git
+git clone https://github.com/RituGupta23/SyncDeck.git
 ```
 
 ### 2. Database Setup
@@ -54,7 +54,7 @@ You can run PostgreSQL using Docker Compose:
 ```bash
 docker-compose up -d
 ```
-This will start a PostgreSQL container on port 5432 with default credentials (`postgres`/`postgres`) and a database named `hintro-db`.
+This will start a PostgreSQL container on port 5432 with default credentials (`postgres`/`postgres`) and a database named `syncdeck-db`.
 
 ### 3. Backend Setup
 
@@ -76,7 +76,7 @@ Configure environment variables:
 touch .env
 
 PORT=3001
-DATABASE_URL="postgresql://postgres:postgres@localhost:5432/hintro_db"
+DATABASE_URL="postgresql://postgres:postgres@localhost:5432/syncdeck_db"
 JWT_SECRET="your_secret_key"
 CLIENT_URL="http://localhost:5173"
 ```

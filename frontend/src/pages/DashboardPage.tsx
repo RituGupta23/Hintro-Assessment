@@ -81,7 +81,7 @@ export const DashboardPage = () => {
                 <div className="flex items-center gap-3">
                     
                     <h1 className="text-xl font-bold text-indigo-300">
-                        Hintro
+                        SyncDeck
                     </h1>
                 </div>
                 <div className="flex items-center gap-3">
